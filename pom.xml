@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>spring-boot-web-jsp</artifactId>
+	<artifactId>techmahindra</artifactId>
 	<packaging>war</packaging>
-	<name>Spring Boot Web JSP Example</name>
-	<description>Spring Boot Web JSP Example</description>
+	<name>Tech Mahindra</name>
+	<description>DevOps DEMO Project</description>
 	<url>https://www.mkyong.com</url>
 	<version>1.0</version>
 
