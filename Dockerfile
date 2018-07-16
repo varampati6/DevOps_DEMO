@@ -9,7 +9,7 @@ RUN yum -y update && \
  yum -y install tar
 
 # Prepare environment
-ENV JAVA_HOME /usr/bin/java
+#ENV JAVA_HOME /usr/bin/java
 ENV JAVA_HOME /opt/java
 ENV CATALINA_HOME /opt/tomcat
 ENV CATALINA_BASE /opt/tomcat
@@ -32,16 +32,14 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
 ENV TOMCAT_MAJOR 9
 ENV TOMCAT_VERSION 9.0.10
 
-RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
- tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
- rm apache-tomcat*.tar.gz && \
- mv apache-tomcat* ${CATALINA_HOME}
+#RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+# tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+# rm apache*.tar.gz && \
+# mv apache* ${CATALINA_HOME}
 #ADD java /opt/java
-#ADD tomcat /opt/tomcat
+ADD tomcat /opt/tomcat
 
-
-ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
-
+#ADD target/*.war $CATALINA_HOME/webapps/ROOT.war
 
 RUN chmod -R +x ${CATALINA_HOME}
 RUN chmod -R +x ${JAVA_HOME}
@@ -50,8 +48,8 @@ RUN chmod +x ${CATALINA_HOME}/bin/*sh
 # Create Tomcat admin user
 ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
 ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
-ADD context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml 
-ADD context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
+#ADD context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml 
+#ADD context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
 RUN chmod +x $CATALINA_HOME/scripts/*.sh
 
 # Create tomcat user
