@@ -12,13 +12,15 @@ EXPOSE 8080
 
 ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
 #WORKDIR /opt/tomcat
-
+#RUN chown -R root:root /opt/tomcat &&\
+RUN  chmod -R +x $CATALINA_HOME
+RUN chmod -R +x $JAVA_HOME
 EXPOSE 8080
 #EXPOSE 8009
 
 USER tomcat
 CMD ["tomcat.sh"]
-#CMD ["$CATALINA_HOME/bin/catalina.sh", "run"]
+CMD ["$CATALINA_HOME/bin/catalina.sh", "run"]
 
 #RUN chmod +x /app/techmahindra.war
 #ENTRYPOINT ["java","-jar","/app/techmahindra.war"]
