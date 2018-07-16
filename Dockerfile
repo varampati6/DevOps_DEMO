@@ -1,5 +1,5 @@
 #FROM centos:centos7
-FROM varampati/tomcat:1.0
+FROM varampati/tomcat:2.0
 MAINTAINER ravi
 RUN echo "Building Image, Bro!"
 ENV PORT 8080
