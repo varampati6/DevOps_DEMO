@@ -34,7 +34,7 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>Tech Mahindra DevOps Team DEMO</h1>
+			<h1>Welcome to Tech Mahindra</h1>
 			<h2>Message: ${message}</h2>
 		</div>
 
