@@ -12,7 +12,8 @@ EXPOSE 8080
 
 ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
 #WORKDIR /opt/tomcat
-RUN chown -R root:ravi $CATALINA_HOME && \
+RUN groupadd root && \
+    chown -R root:ravi $CATALINA_HOME && \
     chmod -R +x $CATALINA_HOME && \
     chmod -R +x $JAVA_HOME
 EXPOSE 8080
