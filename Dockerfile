@@ -14,7 +14,8 @@ ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
 #WORKDIR /opt/tomcat
 RUN groupadd -r tomcat && \
  useradd -g tomcat -d ${CATALINA_HOME} -s /sbin/nologin  -c "Tomcat user" tomcat && \
- chown -R tomcat:tomcat ${CATALINA_HOME}
+ chown -R tomcat:tomcat ${CATALINA_HOME} && \
+ chmod -R g+rw ${CATALINA_HOME}
 EXPOSE 8080
 #EXPOSE 8009
 
