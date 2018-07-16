@@ -38,7 +38,11 @@ RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TO
  mv apache-tomcat* ${CATALINA_HOME}
 #ADD java /opt/java
 #ADD tomcat /opt/tomcat
+
+
 ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
+
+
 RUN chmod -R +x ${CATALINA_HOME}
 RUN chmod -R +x ${JAVA_HOME}
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
