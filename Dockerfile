@@ -38,7 +38,7 @@ RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TO
  mv apache-tomcat* ${CATALINA_HOME}
 #ADD java /opt/java
 #ADD tomcat /opt/tomcat
-ADD ./target/*.war $TOMCAT_HOME/webapps/ROOT.war
+ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
 RUN chmod -R +x ${CATALINA_HOME}
 RUN chmod -R +x ${JAVA_HOME}
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
@@ -46,8 +46,8 @@ RUN chmod +x ${CATALINA_HOME}/bin/*sh
 # Create Tomcat admin user
 ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
 ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
-ADD tomcat/webapps/host-manager/META-INF/context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml
-ADD tomcat/webapps/manager/META-INF/context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
+ADD context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml && \
+    context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
 RUN chmod +x $CATALINA_HOME/scripts/*.sh
 
 # Create tomcat user
