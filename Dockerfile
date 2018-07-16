@@ -10,7 +10,7 @@ EXPOSE 8080
 #ENV CATALINA_BASE /opt/tomcat
 #ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin:$CATALINA_HOME/scripts
 
-ADD ./target/*.war /tomcat/webapps/ROOT.war
+ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
 #WORKDIR /opt/tomcat
 
 EXPOSE 8080
