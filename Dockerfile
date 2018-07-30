@@ -1,6 +1,6 @@
 # Centos based container with Java and Tomcat
 FROM centos:centos7
-#FROM java:8
+FROM java:8
 MAINTAINER ravi
 
 # Install prepare infrastructure
@@ -10,21 +10,21 @@ RUN yum -y update && \
 
 # Prepare environment
 #ENV JAVA_HOME /usr/bin/java
-ENV JAVA_HOME /opt/java
+#ENV JAVA_HOME /opt/java
 ENV CATALINA_HOME /opt/tomcat
 ENV CATALINA_BASE /opt/tomcat
 ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin:$CATALINA_HOME/scripts
 
 # Install Oracle Java8
-ENV JAVA_VERSION 8u181
-ENV JAVA_BUILD 8u181-b13
-ENV JAVA_DL_HASH 96a7b8442fe848ef90c96a2fad6ed6d1
+#ENV JAVA_VERSION 8u181
+#ENV JAVA_BUILD 8u181-b13
+#ENV JAVA_DL_HASH 96a7b8442fe848ef90c96a2fad6ed6d1
 # http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" \
- http://download.oracle.com/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_DL_HASH}/jdk-${JAVA_VERSION}-linux-x64.tar.gz && \
- tar -xvf jdk-${JAVA_VERSION}-linux-x64.tar.gz && \
- rm jdk*.tar.gz && \
- mv jdk* ${JAVA_HOME}
+#RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+# http://download.oracle.com/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_DL_HASH}/jdk-${JAVA_VERSION}-linux-x64.tar.gz && \
+# tar -xvf jdk-${JAVA_VERSION}-linux-x64.tar.gz && \
+# rm jdk*.tar.gz && \
+# mv jdk* ${JAVA_HOME}
 
 
 # Install Tomcat
