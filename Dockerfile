@@ -28,23 +28,16 @@ ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin:$CATALINA_HOME/scripts
 
 
 # Install Tomcat
-ENV TOMCAT_MAJOR 9
-ENV TOMCAT_VERSION 9.0.10
+#ENV TOMCAT_MAJOR 9
+#ENV TOMCAT_VERSION 9.0.10
 
-RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
- tar -xzvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
- rm apache*.tar.gz && \
- mv apache* ${CATALINA_HOME}
-
-# Create Tomcat admin user
-ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
-ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
-ADD context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml 
-ADD context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
-RUN chmod +x $CATALINA_HOME/scripts/*.sh
+#RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+# tar -xzvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+# rm apache*.tar.gz && \
+# mv apache* ${CATALINA_HOME}
 
 #ADD java /opt/java
-#ADD tomcat /opt/tomcat
+ADD tomcat /opt/tomcat
 ADD ./target/*.war $CATALINA_HOME/webapps/ROOT.war
 
 
@@ -53,11 +46,11 @@ RUN chmod -R +x ${JAVA_HOME}
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
 
 # Create Tomcat admin user
-#ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
+ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
 #ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
 #ADD context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml 
 #ADD context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
-#RUN chmod +x $CATALINA_HOME/scripts/*.sh
+RUN chmod +x $CATALINA_HOME/scripts/*.sh
 
 # Create tomcat user
 RUN groupadd -r tomcat && \
