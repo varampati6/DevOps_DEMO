@@ -47,8 +47,8 @@ RUN chmod +x ${CATALINA_HOME}/bin/*sh
 # Create Tomcat admin user
 ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
 ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
-#ADD context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml 
-#ADD context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
+ADD context.xml $CATALINA_HOME/webapps/host-manager/META-INF/context.xml 
+ADD context.xml $CATALINA_HOME/webapps/manager/META-INF/context.xml
 RUN chmod +x $CATALINA_HOME/scripts/*.sh
 
 # Create tomcat user
