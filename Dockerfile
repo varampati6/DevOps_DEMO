@@ -4,9 +4,9 @@ FROM java:8
 MAINTAINER ravi
 
 # Install prepare infrastructure
-RUN yum -y update && \
- yum -y install wget && \
- yum -y install tar
+#RUN yum -y update && \
+# yum -y install wget && \
+# yum -y install tar
 
 # Prepare environment
 #ENV JAVA_HOME /usr/bin/java
