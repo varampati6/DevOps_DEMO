@@ -34,7 +34,7 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>Welcome to Tech Mahindra, Electronic City Phase II</h1>
+			<h1>Unisys: A worldwide information technology company</h1>
 			<h2>Message: ${message}</h2>
 		</div>
 
